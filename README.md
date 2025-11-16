@@ -116,3 +116,8 @@ MediaPipe para detección facial ✔
 
 Clasificación de tres emociones (feliz, triste, enojado) ✔
 
+---
+
+![Image](https://github.com/user-attachments/assets/22ef69cf-dfdb-4cf8-b313-75174b84a129)
+
+![Image](https://github.com/user-attachments/assets/fc167f04-2245-4811-a680-85c0e4c9023f)
