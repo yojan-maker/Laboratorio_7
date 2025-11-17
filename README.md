@@ -322,4 +322,159 @@ Descripción de Módulos
 
 ## 🚀 Procedimiento paso a paso
 
-1️⃣ Crear entorno virtual
+- 1️⃣ Crear entorno virtual
+
+```bash
+python3 -m venv venv
+source venv/bin/activate
+```
+
+- 2️⃣ Instalar dependencias
+
+```bash
+    pip install -r requirements.txt
+```
+
+- 3️⃣ Generar datos sintéticos (opcional)
+
+```bash
+    python3 tools/gen_synthetic.py
+```
+
+- 4️⃣ Ejecutar ETL completo
+
+```bash
+    python3 etl/run_etl.py
+```
+Se genera:
+```bash
+    data/procesado.csv
+```
+
+- 5️⃣ Entrenar el modelo
+```bash
+    python3 model/train_model.py
+```
+Se genera:
+```bash
+    model/modelo_exportado.h5
+```
+- 6️⃣ Ejecutar dashboard
+```bash
+    streamlit run dashboard/app.py
+```
+
+### 📊 Resultados esperados
+
+- Archivo procesado.csv generado correctamente
+
+- Modelo entrenado disponible
+
+- Dashboard con:
+
+    - visualización de la base procesada
+
+    - mapa de correlación
+
+    - histogramas
+
+    - predicción con modelo neuronal
+
+### 🧪 Validación adicional 
+
+Ver puertos expuestos:
+```bash
+    nmap -sV localhost
+```
+
+Auditoría del sistema:
+```bash
+    sudo lynis audit system
+```
+--- 
+
+# 🐳 Dockerización
+
+Se realizó la **dockerización** del **ETL**, el **modelo** y el **dashboard** para garantizar **portabilidad**, **reproducibilidad** y **despliegue independiente** del sistema operativo.
+
+A continuación se describe el proceso realizado.
+
+---
+
+### 📌 1. Creación del Dockerfile
+
+Se creó un archivo `Dockerfile` en el directorio raíz del proyecto.
+
+### ¿Qué hace este Dockerfile?
+
+* Utiliza una **imagen ligera** (`python:3.12-slim`).
+* Copia **todo el proyecto** al contenedor.
+* Instala **dependencias** sin utilizar caché.
+* Expone el **puerto 8501** (donde corre Streamlit).
+* Arranca directamente el **Dashboard** al iniciar el contenedor.
+
+###  2. Construcción de la imagen
+
+Desde la carpeta raíz del proyecto:
+
+```bash
+    docker build -t stc_lab7 .
+```
+Donde:
+
+- stc_lab7 es el nombre de la imagen resultante.
+
+Esto genera una imagen autosuficiente que contiene:
+
+- ETL
+
+- Modelo
+
+- Dashboard
+
+- Dependencias de Python
+
+-  3. Ejecución del contenedor
+
+Para ejecutar el dashboard desde Docker
+
+```bash
+    docker run -p 8501:8501 stc_lab7
+```
+Descripción:
+
+- -p 8501:8501 expone el puerto del contenedor al host
+
+- El dashboard queda disponible en:
+    ```bash
+    http://localhost:8501
+    ```
+    
+###  4. Verificación del despliegue
+
+Después de levantar el contenedor:
+
+✔ Ver puertos activos con nmap
+  ```bash
+    nmap -sV localhost
+   ```
+
+Debe aparecer:
+ ```bash
+    8501/tcp open http streamlit
+ ```
+    
+✔ Auditoría de seguridad opcional con lynix
+  ```bash
+sudo lynis audit system
+  ```
+
+- Esto valida:
+
+    - dependencias del contenedor
+
+    - puertos expuestos
+
+    - vulnerabilidades conocidas
+
+
