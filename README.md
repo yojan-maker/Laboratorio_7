@@ -138,6 +138,23 @@ Específicamente, se busca:
 * Desarrollar un **ETL completo** a partir de la base de datos proporcionada en clase (o datos sintéticos en caso de ausencia).
 * Aplicar **transformaciones**, generar un dataset procesado.
 * Construir un **dashboard con Streamlit** que visualice la información obtenida y los resultados del modelo.
+  
+### 📊 Descripción del Dashboard (Resumen Funcional)
+
+- El dashboard desarrollado en este punto ofrece una interfaz interactiva que permite visualizar y analizar los datos resultantes del proceso ETL. Entre sus funcionalidades principales se encuentran:
+
+    - Visualización del dataset procesado: muestra las primeras filas del archivo procesado.csv, permitiendo revisar el estado final de los datos después de la limpieza y transformación.
+
+    - Mapa de correlación: genera una matriz gráfica interactiva que permite identificar relaciones entre las variables numéricas del conjunto de datos.
+
+    - Exploración de distribuciones: ofrece la posibilidad de seleccionar cualquier variable numérica y visualizar su distribución mediante un histograma.
+
+    - Predicción con el modelo entrenado: permite cargar automáticamente el modelo generado en el entrenamiento y realizar una predicción utilizando la primera fila del dataset, mostrando el valor calculado en la interfaz         lateral.
+
+    - Indicadores de estado: el dashboard valida la presencia del dataset procesado y del modelo entrenado, mostrando advertencias si alguno de ellos no está disponible.
+
+    - Este panel integra de forma práctica el resultado del ETL, el modelo de predicción y las herramientas de visualización, permitiendo analizar el comportamiento del sistema STC de manera clara e interactiva.
+
 
 #### Conceptos Integrados
 
@@ -477,4 +494,25 @@ sudo lynis audit system
 
     - vulnerabilidades conocidas
 
+--- 
+
+![Image](https://github.com/user-attachments/assets/86ae9d71-2f22-4654-a537-7bd19c0706f5)
+
+![Image](https://github.com/user-attachments/assets/4b555cdf-5e0a-4aa6-b504-0ecd36eadbba)
+
+![Image](https://github.com/user-attachments/assets/24a32a3c-eba4-4868-adf3-b549920acd65)
+
+![Image](https://github.com/user-attachments/assets/4b6b32cc-e72a-4871-9d68-f62025598b45)
+
+![Image](https://github.com/user-attachments/assets/7cf7f106-0c90-4d19-b969-b73633a8f523)
+
+![Image](https://github.com/user-attachments/assets/502d65a6-a3af-4552-ba56-ef0e6c926db4)
+
+![Image](https://github.com/user-attachments/assets/6ad58cea-81cf-4d2e-ad3d-2adc54db6886)
+
+![Image](https://github.com/user-attachments/assets/c160bbe4-4da1-416a-8a95-5ad446a19343)
+
+![Image](https://github.com/user-attachments/assets/3d7fe27e-7889-4f8e-a006-d864758667a5)
+
+---
 
