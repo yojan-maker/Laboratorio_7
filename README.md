@@ -1,4 +1,4 @@
-## 🖼️ 3. Análisis de Sentimientos por Imágenes con MediaPipe, Hilos, Mutex y Semáforos
+## 🖼️ 1. Análisis de Sentimientos por Imágenes con MediaPipe, Hilos, Mutex y Semáforos
 
 Este componente implementa un sistema de clasificación de **emociones básicas** (feliz, triste, enojado) a partir de imágenes faciales. Para la detección y extracción de características, se utiliza la librería **MediaPipe Face Mesh**.
 
@@ -121,3 +121,205 @@ Clasificación de tres emociones (feliz, triste, enojado) ✔
 ![Image](https://github.com/user-attachments/assets/22ef69cf-dfdb-4cf8-b313-75174b84a129)
 
 ![Image](https://github.com/user-attachments/assets/fc167f04-2245-4811-a680-85c0e4c9023f)
+
+
+---
+
+## 2) 📘 Desarrollo de un ETL partiendo de una base de datos
+
+---
+
+### 🎯 Objetivo del Punto 2
+
+El objetivo es desarrollar un pipeline ETL funcional, entrenar un modelo simple y desplegar un dashboard interactivo en Streamlit, integrando diferentes conceptos del curso.
+
+Específicamente, se busca:
+
+* Desarrollar un **ETL completo** a partir de la base de datos proporcionada en clase (o datos sintéticos en caso de ausencia).
+* Aplicar **transformaciones**, generar un dataset procesado.
+* Construir un **dashboard con Streamlit** que visualice la información obtenida y los resultados del modelo.
+
+#### Conceptos Integrados
+
+Este punto integra y refuerza conceptos clave vistos a lo largo del laboratorio:
+
+* Terminal de **Ubuntu Linux**
+* **Concurrencia / hilos / semáforos**
+* **Seguridad en la red** (nmap, lynis)
+* **Entornos virtuales** (`venv`)
+* **Docker** para despliegue
+* Uso de librerías como Mediapipe y PyBullet (conceptos relacionados a visión/simulación)
+* **Arquitectura modular** en Python
+
+---
+
+### 📌 Descripción del Trabajo Realizado
+
+Durante este punto del laboratorio se desarrolló una solución modular, compuesta por un pipeline de datos y una capa de visualización:
+
+#### ✔ 1. Un Pipeline ETL Completo
+
+El pipeline se divide en tres módulos esenciales para el procesamiento de datos:
+
+| Módulo | Función | Descripción |
+| :--- | :--- | :--- |
+| **`extract`** | **Carga de Datos** | Carga de datos desde archivos fuente (Excel/CSV) o generación de datos sintéticos. |
+| **`transform`** | **Limpieza y Normalización** | Aplicación de reglas de negocio, limpieza de *outliers* y normalización de variables. |
+| **`load`** | **Exportación** | Exportación del dataset transformado a un archivo `procesado.csv` para su uso posterior. |
+
+El ETL se ejecuta mediante el siguiente comando:
+
+```bash
+python3 etl_pipeline.py
+```
+
+**✔ 2. Entrenamiento de un modelo básico**
+
+Utilizando redes neuronales con Keras/TensorFlow:
+
+- Normalización MinMaxScaler
+
+- Red sencilla (64–32–1)
+
+- Entrenamiento supervisado
+
+- Guardado del modelo en model/modelo_exportado.h5
+
+Se ejecuta con:
+
+```bash
+python3 model/train_model.py
+```
+**✔ 3. Creación del Dashboard en Streamlit**
+
+El dashboard:
+
+- Muestra el dataset procesado
+
+- Genera un mapa de correlación
+
+- Permite visualizar distribuciones
+
+- Carga el modelo entrenado
+
+- Realiza predicciones sobre filas del dataset
+
+El dashboard se ejecuta con:
+```bash
+streamlit run dashboard/app.py
+```
+
+### 🧠 Conceptos aplicados
+---
+
+**🟦 Ubuntu Linux**
+
+- Terminal, rutas absolutas y relativas
+
+- Manejo de entornos virtuales
+
+- Ejecución de scripts Python
+
+- Instalación de librerías del laboratorio
+
+**🟧 ETL**
+
+- Separación en módulos: extract, transform, load
+
+- Manejo de errores (archivos corruptos, rutas inválidas)
+
+- Consolidación en procesado.csv
+
+**🟨 Concurrencia, hilos y semáforos**
+
+- Aunque no se aplican directamente al ETL, sí se integran en:
+
+- Manejo de carga de modelo
+
+**🟥 Seguridad en la red**
+```bash
+nmap -sV localhost
+sudo lynis audit system
+```
+Aplicadas para:
+
+- Evaluar seguridad del contenedor
+
+- Revisar puertos expuestos del dashboard
+
+**🟪 Docker**
+
+- Se preparó un Dockerfile para permitir:
+
+- Instalar dependencias
+
+- Ejecutar ETL, modelo y dashboard dentro de un contenedor
+
+**🟩 Machine Learning**
+
+- Red neuronal artificial
+
+- Normalización
+
+- Entrenamiento supervisado
+
+- Predicción desde el dashboard
+
+**🟫 Mediapipe / PyBullet**
+
+- Aunque no se usan directamente en el ETL, se relacionan con:
+
+- Manejo de grandes volúmenes de datos sensoriales
+
+- Comprensión de señales biomecánicas
+
+- Aplicaciones del curso
+
+- Lectura concurrente de archivos (concepto discutido)
+
+- Estructura del dashboard
+
+---
+
+### 📂 Estructura del directorio
+
+Descripción de Módulos
+
+    - data/
+
+        BD_COMPLETA.xlsx: Base de datos original (opcional).
+
+        sensores_base.csv: Datos base (Generados sintéticamente).
+
+        procesado.csv: Dataset limpio y transformado (Salida del ETL).
+
+    - etl/
+
+        extract.py: Módulo de Extracción (Carga de datos).
+
+        transform.py: Módulo de Transformación (Limpieza y normalización).
+
+        load.py: Módulo de Carga (Exporta a procesado.csv).
+
+        run_etl.py: Script principal de ejecución del pipeline.
+
+    - model/
+
+        train_model.py: Script para el entrenamiento del modelo.
+
+        predict_model.py: Script para predicciones.
+
+        modelo_exportado.h5: Modelo entrenado y serializado.
+
+    - dashboard/
+
+        app.py: Dashboard interactivo con Streamlit (Punto 2).
+
+    - tools/
+
+        gen_synthetic.py: Script para generar datos sintéticos.
+---
+
+## 🚀 Procedimiento paso a paso
+
+1️⃣ Crear entorno virtual
