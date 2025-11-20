@@ -1,4 +1,4 @@
-## 🖼️ 1. Análisis de Sentimientos por Imágenes con MediaPipe, Hilos, Mutex y Semáforos
+# 🖼️ 1. Análisis de Sentimientos por Imágenes con MediaPipe, Hilos, Mutex y Semáforos
 
 Este componente implementa un sistema de clasificación de **emociones básicas** (feliz, triste, enojado) a partir de imágenes faciales. Para la detección y extracción de características, se utiliza la librería **MediaPipe Face Mesh**.
 
@@ -125,7 +125,7 @@ Clasificación de tres emociones (feliz, triste, enojado) ✔
 
 ---
 
-## 2) 📘 Desarrollo de un ETL partiendo de una base de datos
+# 2) 📘 Desarrollo de un ETL partiendo de una base de datos
 
 ---
 
@@ -173,6 +173,115 @@ Este punto integra y refuerza conceptos clave vistos a lo largo del laboratorio:
 ### 📌 Descripción del Trabajo Realizado
 
 Durante este punto del laboratorio se desarrolló una solución modular, compuesta por un pipeline de datos y una capa de visualización:
+
+## 🧹 Explicación Detallada del Proceso ETL Realizado
+
+Este apartado responde a la pregunta del profesor sobre **“qué se hizo con los datos, cómo se limpiaron y qué criterios se aplicaron en el procesamiento”**.
+
+---
+
+### 1. ¿Qué datos contenía la base original?
+
+La base de datos (archivo Excel de la tesis **“Síndrome de Túnel Carpiano”**) contenía:
+
+* **Señales capturadas por sensores** (EMG, fuerza, acelerómetros, etc.).
+* Información de **participantes**.
+* Registros por **ensayo**.
+* **Tiempos y valores** por cada movimiento.
+* **Etiquetas** del experimento (**normal / patológico**).
+
+> El archivo estaba dividido en **varias hojas** y tenía **formatos no uniformes**.
+
+---
+
+## 📌 2. Principales problemas encontrados en la base de datos cruda
+
+Durante la implementación del ETL se identificaron varios *issues* típicos:
+
+* **❌ Formato inconsistente**
+    * Algunas hojas tenían encabezados distintos.
+    * Los nombres de columnas no seguían un mismo patrón.
+* **❌ Valores nulos o incompletos (`NaN`)**
+    * En varias columnas de señales aparecían celdas vacías.
+    * Registros incompletos por fallas en el sensor.
+* **❌ Variables irrelevantes**
+    * Había columnas que no aportaban al análisis (comentarios, códigos internos, *timestamps* redundantes).
+* **❌ Datos numéricos sin normalizar**
+    * Rango de sensores distinto entre pruebas.
+    * Señales sin escalar: **impedían modelos de ML**.
+
+---
+
+## 📌 3. E — Extract (Extracción)
+
+El script de ETL realizó los siguientes pasos de extracción:
+
+1.  **Leyó todas las hojas del Excel** usando `pandas.read_excel()`.
+2.  **Unificó** los *datasets* en un solo `DataFrame`.
+3.  **Extrajo únicamente las columnas relevantes**:
+    * Señales fisiológicas
+    * Fuerzas y aceleraciones
+    * Etiqueta (diagnóstico)
+    * ID del paciente
+
+> Se construyó un solo *dataset* maestro llamado **`bd_completa`**.
+
+## 📌 4. T — Transform (Transformación)
+
+Las transformaciones aplicadas fueron:
+
+- ✔ Limpieza de filas vacías
+```bash
+df = df.dropna()
+```
+- ✔ Corrección de tipos de datos
+
+    - Se forzó a float32 todas las columnas de señales.
+
+    - Se eliminaron columnas con strings innecesarios.
+
+- ✔ Normalización MinMax por sensor
+
+    - Esto es esencial para modelos neuronales:
+```bash
+scaler = MinMaxScaler()
+df[numericas] = scaler.fit_transform(df[numericas])
+```
+- ✔ Renombrado coherente de columnas
+
+    - Para evitar errores posteriores en el modelo.
+
+- ✔ Eliminación de duplicados
+```bash
+df = df.drop_duplicates()
+```
+- ✔ Creación de una columna de índice normalizado
+
+    - Facilita el acceso desde el dashboard.
+
+## 📌 5. L — Load (Carga)
+
+Finalmente, el ETL generó:
+```bash
+data/procesado.csv
+```
+
+- Este archivo es:
+
+    - Limpio
+
+    - Normalizado
+
+    - Cohesivo
+
+    - Consistente en nombres y tipos
+
+    - Sin duplicados
+
+    - Listo para análisis y para alimentar el modelo neuronal
+
+El dashboard de Streamlit lo usa directamente.
+
 
 #### ✔ 1. Un Pipeline ETL Completo
 
