@@ -644,3 +644,62 @@ Utilizaremos el stack aprendido en Digitales III:
 - Control de Versiones y Colaboración: Todo el código fuente, modelos y documentación (README) se gestionarán en GitHub para garantizar la trazabilidad y la colaboración entre los actores de la alianza.
 
 - Sistema Operativo Base: Se utilizará Ubuntu como sistema operativo en los servidores y entornos de desarrollo/despliegue, aprovechando su estabilidad y soporte en la comunidad de código abierto.
+
+---
+
+## 🌍 b) Sistema Inteligente de Monitoreo Ambiental (SIMA) - Convocatoria MinCiencias
+### Infraestructura IA para la Resiliencia Territorial
+
+[![Estado del Proyecto](https://img.shields.io/badge/Estado-En%20Desarrollo-blue)](README.md)
+[![Licencia](https://img.shields.io/badge/Licencia-MIT-green)](LICENSE)
+
+### 🚀 Resumen del Proyecto
+
+SIMA es una solución de Inteligencia Artificial orientada a fortalecer la **resiliencia territorial** ante los desafíos del **cambio climático**. El proyecto propone una **infraestructura robusta** para el monitoreo predictivo de riesgos ambientales, transformando datos geoespaciales en alertas accionables.
+
+| Componente Clave | Tecnología Principal | Propósito |
+| :--- | :--- | :--- |
+| **Visión por Computadora** | **YOLOv8** & **OpenCV** | Detección de anomalías y patrones de riesgo (e.g., deslizamientos, inundaciones). |
+| **Infraestructura** | **Docker** & **Ubuntu** | Contenedorización para un despliegue ágil y escalable. |
+| **Interfaz de Usuario** | **Streamlit** | Dashboard interactivo para la visualización de alertas y mapas de riesgo. |
+| **Gestión de Código** | **GitHub** | Control de versiones, trazabilidad y colaboración académica/empresarial. |
+
+---
+
+### 🏛️ Arquitectura del Sistema (Diagrama de Bloques)
+
+La arquitectura sigue un patrón modular y distribuido, ideal para la infraestructura de IA:
+
+| Etapa | Módulo | Descripción |
+| :---: | :---: | :--- |
+| **1. Adquisición de Datos** | **Módulo Geo-Data** | Captura de imágenes satelitales (fuentes abiertas/públicas) y datos de sensores IoT. |
+| **2. Procesamiento** | **Módulo de Preprocesamiento** | Normalización de imágenes y etiquetado de datos (usando scripts Python en **Ubuntu**). |
+| **3. Inferencia IA** | **Módulo de Detección YOLO** | Contenedor **Docker** con el modelo **YOLO/OpenCV** para la identificación de riesgos. |
+| **4. Alerta y Visualización** | **Módulo Streamlit** | Interfaz web que recibe las detecciones y las muestra en mapas georreferenciados. |
+
+**Diagrama de Bloques Conceptual**
+
+graph TD
+    A[Datos Satelitales/IoT] --> B(Procesamiento de Datos);
+    B --> C{Contenedor Docker: YOLO/OpenCV};
+    C --> D(Base de Datos de Alertas);
+    D --> E[Streamlit Dashboard];
+    E --> F[Usuarios Finales/Organizaciones Locales];
+    style A fill:#f9f,stroke:#333,stroke-width:2px
+    style E fill:#ccf,stroke:#333,stroke-width:2px
+
+**Nota:** Este diagrama conceptual de flujo de datos se implementará usando las capacidades de contenerización de **Docker**.
+
+---
+
+### ⚙️ Instrucciones de Despliegue (Docker y Ubuntu)
+
+Para replicar este proyecto se requiere:
+
+1.  Clonar el repositorio: `git clone https://github.com/tu-usuario/SIMA.git`
+2.  Construir la imagen de Docker: `docker build -t sima-ia .`
+3.  Ejecutar el contenedor en el servidor **Ubuntu**: `docker run -p 8501:8501 sima-ia`
+
+El dashboard de **Streamlit** estará disponible en el puerto `8501`.
+
+---
