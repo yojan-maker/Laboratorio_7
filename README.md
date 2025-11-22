@@ -625,3 +625,22 @@ sudo lynis audit system
 
 ---
 
+# 🤖 Propuesta de Proyecto: Sistema Inteligente de Monitoreo Ambiental (SIMA)
+
+------------
+
+## a) Propuesta de Proyecto
+
+El proyecto SIMA (Sistema Inteligente de Monitoreo Ambiental) busca abordar la problemática de la gestión y prevención de desastres ambientales (como inundaciones o deslizamientos) mediante la implementación de una infraestructura de IA robusta y descentralizada.
+
+Utilizaremos el stack aprendido en Digitales III:
+
+- Identificación y Localización: Se empleará YOLO (You Only Look Once), entrenado con OpenCV, para identificar en tiempo real patrones de riesgo en imágenes satelitales o de drones (e.g., cambios en el cauce de ríos, deforestación, grietas en el suelo).
+
+- Contenedorización y Despliegue: La aplicación de IA, incluyendo el modelo YOLO y el servicio web, se empaquetará en contenedores Docker. Esto asegura la portabilidad y escalabilidad en la infraestructura de la convocatoria.
+
+- Interfaz de Usuario: La visualización de alertas e información geográfica (mapas de calor de riesgo, ubicación de sensores) se realizará mediante una interfaz web desarrollada con Streamlit, facilitando la apropiación social del conocimiento por parte de las organizaciones locales.
+
+- Control de Versiones y Colaboración: Todo el código fuente, modelos y documentación (README) se gestionarán en GitHub para garantizar la trazabilidad y la colaboración entre los actores de la alianza.
+
+- Sistema Operativo Base: Se utilizará Ubuntu como sistema operativo en los servidores y entornos de desarrollo/despliegue, aprovechando su estabilidad y soporte en la comunidad de código abierto.
