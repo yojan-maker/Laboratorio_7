@@ -877,3 +877,25 @@ La integración de RabbitMQ es vital en este pipeline de IA para garantizar la a
 | Escalado | Se pueden añadir nuevas instancias de YOLO para aumentar la capacidad de procesamiento de imágenes. | Simplicidad: Los nuevos productores solo necesitan la dirección del broker, sin afectar a los consumidores (Streamlit). |
 
 Esta cadena de herramientas (Terraform $\rightarrow$ Ansible $\rightarrow$ Docker/RabbitMQ) representa el estándar moderno de DevOps, permitiendo la velocidad, fiabilidad y escalabilidad necesarias para un proyecto de infraestructura de IA de MinCiencias.
+
+---
+
+## 📚 Referencias
+
+La información presentada en esta documentación técnica se fundamenta en los siguientes recursos especializados en Arquitectura de Sistemas, DevOps e Infraestructura como Código (IaC):
+
+### 1. Infraestructura como Código (Terraform)
+
+- HashiCorp. (2024). Terraform Documentation. Recuperado de: https://developer.hashicorp.com/terraform/docs
+
+### 2. Automatización y Gestión de Configuración (Ansible)
+
+- Ansible Documentation. Introduction to Ansible. Recuperado de: https://docs.ansible.com/ansible/latest/user_guide/intro_getting_started.html
+
+### 3. Mensajería Asíncrona (RabbitMQ)
+
+- Videla, G. (2018). RabbitMQ Essentials: The Advanced Message Queuing Protocol (AMQP) in Practice. Packt Publishing.
+
+### 4. Cloud Computing Open Source (OpenStack)
+
+OpenStack Foundation. OpenStack Documentation: Project Navigator. Recuperado de: https://docs.openstack.org/
