@@ -703,3 +703,45 @@ Para replicar este proyecto se requiere:
 El dashboard de **Streamlit** estará disponible en el puerto `8501`.
 
 ---
+
+### c) Tecnologías Futuras Sugeridas
+
+Como experto en la temática y basándote en lo aprendido en Digitales III, estas son las tecnologías futuras que sugiero para llevar el proyecto a un nivel superior, enfocadas en la infraestructura de IA y la eficiencia:
+
+1. Orquestación de Contenedores (Kubernetes - K8s):
+
+- Por qué: Para gestionar un gran número de contenedores Docker en un entorno de producción (infraestructura a gran escala de MinCiencias). Permite la auto-sanación, el escalado automático de los módulos de inferencia (YOLO) y la gestión eficiente de recursos.
+
+2. Modelos de Lenguaje de Gran Escala (LLM) con RAG para Asistencia en Desastres:
+
+- Por qué: Integrar un LLM (entrenado con datos locales/regionales) con la arquitectura RAG (Retrieval-Augmented Generation). Esto permitiría a los usuarios (organizaciones locales) consultar la base de datos de alertas en lenguaje natural (ej. "¿Hay riesgo de inundación en el río X la próxima semana?").
+
+3. Edge Computing y Microcontroladores para Sensores Remotos:
+
+- Por qué: Implementar una versión muy ligera de la inferencia (Tiny-YOLO o modelos optimizados) directamente en dispositivos de bajo consumo (Raspberry Pi o ESP32) ubicados en zonas de riesgo, enviando solo las alertas críticas. Esto reduce la latencia y la dependencia de la conexión a la nube para la toma de decisiones críticas.
+
+El siguiente video muestra la visión de MinCiencias sobre las convocatorias, lo que ayuda a contextualizar la importancia de la iniciativa Colombia Inteligente.
+
+**https://www.youtube.com/watch?v=GlWUn2T3h5Y**
+
+---
+
+## 💡 d) Conclusión e Impacto Socio-Técnico
+
+### Conclusión y Alineación
+
+El Sistema Inteligente de Monitoreo Ambiental (SIMA) demuestra cómo las tecnologías aprendidas en Digitales III (OpenCV, YOLO, Streamlit, Docker, y GitHub) forman una infraestructura de IA coherente y desplegable. La selección de Docker es crucial, ya que garantiza la portabilidad de nuestro modelo (YOLO) a través de la infraestructura que la convocatoria de MinCiencias busca establecer, asegurando la repetibilidad y la escalabilidad del sistema en diversas regiones de Colombia.
+
+---
+
+### Impacto Social y Contribución a la Convocatoria
+
+El proyecto SIMA impacta directamente la misión de la convocatoria "Colombia Inteligente: Infraestructura para el Desarrollo de la Inteligencia Artificial" al:
+
+1. Fomentar la Apropiación Social: El uso de Streamlit permite crear un dashboard accesible que traduce la compleja detección de riesgos por IA en información simple para los tomadores de decisiones locales, cumpliendo con el objetivo de democratizar el acceso a la tecnología.
+
+2. Mitigar Riesgos Ambientales: Al proporcionar alertas tempranas, el sistema reduce la vulnerabilidad de las comunidades ante eventos climáticos extremos, contribuyendo a la resiliencia territorial y salvaguardando vidas y bienes.
+
+3. Generación de Datos: SIMA crea una fuente continua de datos etiquetados sobre patrones de riesgo, que puede ser utilizada por la infraestructura de MinCiencias para entrenar modelos de IA más robustos a nivel nacional.
+
+En esencia, el proyecto no solo utiliza la infraestructura de IA, sino que contribuye activamente a ella, proporcionando una aplicación práctica y un modelo de datos valioso.
