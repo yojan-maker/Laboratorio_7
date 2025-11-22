@@ -666,7 +666,7 @@ SIMA es una solución de Inteligencia Artificial orientada a fortalecer la **res
 
 ---
 
-### 🏛️ Arquitectura del Sistema (Diagrama de Bloques)
+### 🏛️ Arquitectura del Sistema
 
 La arquitectura sigue un patrón modular y distribuido, ideal para la infraestructura de IA:
 
